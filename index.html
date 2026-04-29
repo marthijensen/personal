@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marthina J. Jensen | Personal Website</title>
+  <style>
+    :root {
+      --cool-steel: #9AADBF;
+      --steel-blue: #6D98BA;
+      --tan: #D3B99F;
+      --dusty-rose: #C17767;
+      --coffee-bean: #2A1819;
+
+      --primary: var(--coffee-bean);
+      --secondary: #f7f3ef;
+      --accent: var(--dusty-rose);
+      --soft-accent: var(--tan);
+      --header-accent: var(--steel-blue);
+      --card-bg: #fffdfa;
+      --text: #2A1819;
+      --muted: #5f5656;
+      --border: #e1d4c6;
+      --tag-bg: #efe4da;
+      --nav-bg: rgba(255, 253, 250, 0.95);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Times New Roman MT Condensed", "Times New Roman", Times, serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: linear-gradient(180deg, #f7f3ef 0%, #efe8df 100%);
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--cool-steel), var(--steel-blue));
+      color: white;
+      padding: 70px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      letter-spacing: 0.4px;
+    }
+
+    header p {
+      font-size: 1.08rem;
+      max-width: 850px;
+      margin: 0 auto 22px;
+    }
+
+    nav {
+      background-color: var(--nav-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(6px);
+    }
+
+    nav a {
+      color: var(--primary);
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      background-color: var(--card-bg);
+      margin-bottom: 24px;
+      padding: 28px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 20px rgba(42, 24, 25, 0.06);
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-bottom: 16px;
+      border-bottom: 2px solid var(--soft-accent);
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      color: var(--accent);
+      margin-top: 18px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      margin-left: 22px;
+      margin-top: 8px;
+    }
+
+    li {
+      margin-bottom: 7px;
+    }
+
+    .button-row {
+      margin-top: 20px;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: rgba(255,255,255,0.18);
+      color: white;
+      padding: 10px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 6px;
+      border: 1px solid rgba(255,255,255,0.4);
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .button:hover {
+      background-color: rgba(255,255,255,0.28);
+      transform: translateY(-1px);
+    }
+
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .profile-photo {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 6px solid var(--soft-accent);
+      box-shadow: 0 8px 20px rgba(42, 24, 25, 0.14);
+      background-color: var(--tan);
+    }
+
+    .about-highlight {
+      margin-top: 16px;
+      padding: 16px;
+      border-left: 5px solid var(--dusty-rose);
+      background-color: #f7eee8;
+      border-radius: 10px;
+    }
+
+    .personal-tags {
+      margin-top: 12px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      background: linear-gradient(180deg, #fffdfa 0%, #fbf6f1 100%);
+    }
+
+    .tag {
+      display: inline-block;
+      background-color: var(--tag-bg);
+      color: var(--primary);
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      margin: 4px 4px 0 0;
+      border: 1px solid #e2d1c4;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    a:hover {
+      color: var(--primary);
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 700px) {
+
+      .about-layout {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .profile-photo {
+        margin: 0 auto;
+      }
+
+      .about-highlight {
+        text-align: left;
+      }
+
+      header h1 {
+        font-size: 2.1rem;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 6px;
+      }
+
+      section {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Marthina J. Jensen</h1>
+    <p>Business Intelligence student at Utah Valley University with experience in data analysis, dashboard development, IT support, and digital experience initiatives.</p>
+    <div class="button-row">
+      <a class="button" href="mailto:marthijensen@gmail.com">Email Me</a>
+      <a class="button" href="#projects">View Projects</a>
+      <a class="button" href="#education">Education</a>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#education">University</a>
+    <a href="#classes">Classes</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+
+      <div class="about-layout">
+        <div>
+          <!-- Replace profile.jpg with your own photo file name after uploading it to GitHub. -->
+          <img class="profile-photo" src="photo.jpg" alt="Photo of Marthina J. Jensen" />
+        </div>
+
+        <div>
+          <p>
+            Hi, I’m Marthina J. Jensen. I am a senior at Utah Valley University studying Business Intelligence with an Accounting minor. I am interested in analytics, data visualization, information systems, and technology support. I enjoy using data to understand problems, identify trends, and create dashboards or reports that help teams make better decisions.
+          </p>
+
+          <p>
+            Outside of school and work, I enjoy playing golf and volleyball, spending time outside, and staying active. I like learning new things, working on meaningful projects, and finding ways to connect technology, business, and people.
+          </p>
+
+          <div class="about-highlight">
+            <strong>What I enjoy most:</strong> solving problems, building useful dashboards, learning new tools, and creating work that helps others make clearer decisions.
+          </div>
+
+          <div class="personal-tags">
+            <span class="tag">Business Intelligence</span>
+            <span class="tag">Accounting Minor</span>
+            <span class="tag">Golf</span>
+            <span class="tag">Volleyball</span>
+            <span class="tag">Outdoors</span>
+            <span class="tag">Data Visualization</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>University & Education</h2>
+
+      <h3>Bachelor of Science in Business Intelligence</h3>
+      <p class="muted">Utah Valley University, Orem, UT | Anticipated Graduation: April 2027</p>
+      <ul>
+        <li>GPA: 3.9</li>
+        <li>Dean’s List</li>
+        <li>Phi Theta Kappa Honor Society</li>
+        <li>Utah Valley University Honor Society</li>
+      </ul>
+
+      <h3>Associate of Science in Information Systems and Technology</h3>
+      <p class="muted">Utah Valley University, Orem, UT | May 2025</p>
+
+      <h3>Associate of Applied Science in Information Systems</h3>
+      <p class="muted">Utah Valley university, Orem, UT | April 2026</p>
+
+      <h3>Certifications</h3>
+      <ul>
+        <li>Utah Valley University Infromation Systems Certificate</li>
+        <li>Utah Valley University Information Technology Certificate</li>
+        <li>Utah Valley University Data Analytics Certificate</li>
+        <li>PC Pro Certification</li>
+        <li>IT Fundamentals Certification</li>
+      </ul>
+    </section>
+
+    <section id="classes">
+      <h2>Classes I Have Taken</h2>
+      <p>During my time at Utah Valley University, I have taken courses that helped me build skills in Business Intelligence, Accounting, Technology, Communication, and Data-Driven decision-making.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Business Intelligence & Data Analytics</h3>
+          <ul>
+            <li>Data Analytics</li>
+            <li>Business Statistics/li>
+            <li>Sysems Analysis & Design </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Information Systems & Technology</h3>
+          <ul>
+            <li>Computer Programming</li>
+            <li>Management Information Systems</li>
+            <li>Systems Design Implementation</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Business & Communication</h3>
+          <ul>
+            <li>Intermediate Accounting</li>
+            <li>Written Business Communication</li>
+            <li>Accounting for Information Systems</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Power BI Dashboard Projects</h3>
+          <p>
+            Built interactive Power BI dashboards to support decision-making, track operational insights, and improve reporting visibility.
+          </p>
+          <span class="tag">Power BI</span>
+          <span class="tag">Data Analysis</span>
+          <span class="tag">Dashboards</span>
+        </div>
+
+        <div class="card">
+          <h3>Student Success Analytics Project</h3>
+          <p>
+            Analyzed student outcome data to identify patterns related to dropout, enrollment, and graduation. Compared classification models such as Decision Tree and Naive Bayes.
+          </p>
+          <span class="tag">RStudio</span>
+          <span class="tag">Decision Tree</span>
+          <span class="tag">Naive Bayes</span>
+        </div>
+
+        <div class="card">
+          <h3>OpenWeather App</h3>
+          <p>
+            Created a weather application that uses zip code input to retrieve current weather data, including temperature, wind, pressure, humidity, and background color changes based on temperature.
+          </p>
+          <span class="tag">C#</span>
+          <span class="tag">.NET MAUI</span>
+          <span class="tag">API</span>
+        </div>
+
+        <div class="card">
+          <h3>OpenEarthquake App</h3>
+          <p>
+            Built an earthquake search application using USGS data. The app allows users to enter dates and earthquake magnitude to retrieve and display results.
+          </p>
+          <span class="tag">C#</span>
+          <span class="tag">JSON</span>
+          <span class="tag">API</span>
+        </div>
+
+        <div class="card">
+          <h3>Business Website Project</h3>
+          <p>
+            Designed and developed a business home page using HTML, CSS, and JavaScript with a focus on layout, navigation, and user experience.
+          </p>
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+        </div>
+
+        <div class="card">
+          <h3>AI Innitiative</h3>
+          <p>
+            Manage the AI Initiative projects, building AI Agents for multiple departments across the organization. 
+          </p>
+          <span class="tag">Agentic AI</span>
+          <span class="tag">Chat GPT</span>
+          <span class="tag">Microsoft Copilot</span>
+        </div>
+      </div>
+
+        <div class="card">
+          <h3>Ticket and Operational Reporting</h3>
+          <p>
+            Worked on analytics related to ticket volume, response time, resolution time, repeat incidents, and knowledge base utilization.
+          </p>
+          <span class="tag">Reporting</span>
+          <span class="tag">KPIs</span>
+          <span class="tag">Operations</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+
+      <h3>Student Business Intelligence Analyst</h3>
+      <p class="muted">Digital Experience and Enablement, Utah Valley University | January 2025 – Present</p>
+      <ul>
+        <li>Analyze operational and business data to build dashboards, reports, and visualizations.</li>
+        <li>Collect, clean, and interpret data from multiple sources to identify trends and key metrics.</li>
+        <li>Support digital experience initiatives through actionable insights and reporting.</li>
+      </ul>
+
+      <h3>IT Intern</h3>
+      <p class="muted">Proofpoint, Draper, UT | May 2024 – December 2025</p>
+      <ul>
+        <li>Created interactive Power BI dashboards to improve decision-making and operational insights.</li>
+        <li>Adapted quickly to new technologies and software to support IT operations.</li>
+        <li>Provided user support, troubleshooting, and software guidance for stakeholders.</li>
+      </ul>
+
+      <h3>Information Systems and Technology Department Representative</h3>
+      <p class="muted">College of Engineering and Technology, Utah Valley University | August 2023 – April 2024</p>
+      <ul>
+        <li>Developed communication strategies to simplify complex concepts.</li>
+        <li>Launched student feedback initiatives to improve academic experiences.</li>
+      </ul>
+
+      <h3>Student Lab Assistant</h3>
+      <p class="muted">Student Computer Labs, Utah Valley University | January 2023 – August 2023</p>
+      <ul>
+        <li>Managed daily lab operations and helped maintain equipment and software availability.</li>
+        <li>Provided one-on-one technical support to students.</li>
+      </ul>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div>
+        <span class="tag">Data Analysis</span>
+        <span class="tag">Reporting</span>
+        <span class="tag">Power BI</span>
+        <span class="tag">Microsoft Office Suite</span>
+        <span class="tag">Basic SQL</span>
+        <span class="tag">IT Support</span>
+        <span class="tag">Hardware Support</span>
+        <span class="tag">Software Support</span>
+        <span class="tag">Policy & Compliance Support</span>
+        <span class="tag">Communication</span>
+        <span class="tag">Problem Solving</span>
+        <span class="tag">Adaptability</span>
+        <span class="tag">Service-Oriented Mindset</span>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p><strong>Email:</strong> <a href="mailto:marthijensen@gmail.com">marthijensen@gmail.com</a></p>
+      <p><strong>Location:</strong> Utah</p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/marthina-jensen-21020a275" target="_blank">linkedin.com/in/marthina-jensen-21020a275</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Marthina J. Jensen. All rights reserved.</p>
+  </footer>
+</body>
+</html>
